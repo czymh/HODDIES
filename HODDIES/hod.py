@@ -368,6 +368,7 @@ class HOD:
                 cosmo_= [UchuuPlanck2018, UchuuPlanck2018DDE, UchuuDESIY1DDE, UchuuPlanck2018]
                 self.cosmo =  dict(zip(DDE_sims, cosmo_))[self.args['hcat']['sim_name']](engine=self.args['cosmo']['engine'])
             else:
+                from cosmoprimo import Cosmology
                 print('Initialize custom cosmology from the "cosmo" parameters', flush=True)
                 self.cosmo = Cosmology(**{k: v for k, v in self.args['cosmo'].items() if v is not None})
         except ImportError:
